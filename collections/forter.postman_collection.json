@@ -1,0 +1,153 @@
+{
+  "info": {
+    "name": "Forter API",
+    "description": "Forter fraud prevention and digital identity API for online commerce. Real-time trust decisions for orders, payments, signups, and logins, plus chargeback/compensation and data-privacy endpoints. Enterprise/contact-sales access: credentials (site ID + API key) are provisioned by Forter. Documented host https://api.forter.secure.com; in practice prepend your site ID (https://{siteId}.api.forter.secure.com). Paths/methods are grounded in docs.forter.com; request/response bodies are MODELED.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{apiKey}}", "type": "string" },
+      { "key": "password", "value": "", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.forter.secure.com", "type": "string" },
+    { "key": "apiKey", "value": "", "type": "string" },
+    { "key": "siteId", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Submit an order for a decision (v2)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "x-forter-siteid", "value": "{{siteId}}" },
+              { "key": "api-version", "value": "10.1" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v2/orders/:orderId", "host": ["{{baseUrl}}"], "path": ["v2", "orders", ":orderId"], "variable": [{ "key": "orderId", "value": "" }] },
+            "description": "Send order/checkout information to receive a real-time fraud or abuse decision. Path/method confirmed; body modeled."
+          }
+        },
+        {
+          "name": "Submit an order for a decision (v3)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "x-forter-siteid", "value": "{{siteId}}" },
+              { "key": "api-version", "value": "10.1" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v3/orders/:orderId", "host": ["{{baseUrl}}"], "path": ["v3", "orders", ":orderId"], "variable": [{ "key": "orderId", "value": "" }] },
+            "description": "Version 3 of the order decision endpoint. Path/method confirmed; body modeled."
+          }
+        },
+        {
+          "name": "Report order status",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "x-forter-siteid", "value": "{{siteId}}" },
+              { "key": "api-version", "value": "10.1" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v2/status/:orderId", "host": ["{{baseUrl}}"], "path": ["v2", "status", ":orderId"], "variable": [{ "key": "orderId", "value": "" }] },
+            "description": "Report the downstream lifecycle status of an order back to Forter. Path/method confirmed; body modeled."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Accounts",
+      "item": [
+        {
+          "name": "Submit a signup for a decision",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "x-forter-siteid", "value": "{{siteId}}" },
+              { "key": "api-version", "value": "10.1" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v2/accounts/signup/:accountId", "host": ["{{baseUrl}}"], "path": ["v2", "accounts", "signup", ":accountId"], "variable": [{ "key": "accountId", "value": "" }] },
+            "description": "Send registration information at signup to receive a fraud or abuse decision. Path/method confirmed; body modeled."
+          }
+        },
+        {
+          "name": "Submit a login / authentication result (ATO)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "x-forter-siteid", "value": "{{siteId}}" },
+              { "key": "api-version", "value": "10.1" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v2/accounts/authentication-result/:loginId", "host": ["{{baseUrl}}"], "path": ["v2", "accounts", "authentication-result", ":loginId"], "variable": [{ "key": "loginId", "value": "" }] },
+            "description": "Send login attempt information to receive an account takeover decision. Path/method confirmed; body modeled."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Disputes",
+      "item": [
+        {
+          "name": "Submit a compensation request for a decision",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "x-forter-siteid", "value": "{{siteId}}" },
+              { "key": "api-version", "value": "10.1" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v2/unified/compensation/request/:id", "host": ["{{baseUrl}}"], "path": ["v2", "unified", "compensation", "request", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Send a customer-initiated compensation request (refund/reship) to receive a fraud or abuse decision. Path/method confirmed; body modeled."
+          }
+        },
+        {
+          "name": "Report a dispute (chargeback)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "x-forter-siteid", "value": "{{siteId}}" },
+              { "key": "api-version", "value": "10.1" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v2/dispute/:id", "host": ["{{baseUrl}}"], "path": ["v2", "dispute", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "MODELED PATH. Report a customer-initiated dispute to Forter. Disputes group is documented; exact path not verified from a public sample."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Data Privacy",
+      "item": [
+        {
+          "name": "Data-subject profile access",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "x-forter-siteid", "value": "{{siteId}}" },
+              { "key": "api-version", "value": "10.1" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v2/accounts/profile-access/:id", "host": ["{{baseUrl}}"], "path": ["v2", "accounts", "profile-access", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Profile access endpoint for privacy and compliance workflows. Path/method confirmed; body modeled."
+          }
+        }
+      ]
+    }
+  ]
+}

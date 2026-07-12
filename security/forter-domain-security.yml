@@ -1,0 +1,42 @@
+generated: '2026-07-12'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: forter.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 13 18:55:22 2026 GMT
+  cert_issuer: Google Trust Services (WE1)
+  hsts: true
+  hsts_max_age: 31536000
+- host: docs.forter.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 20 11:58:39 2026 GMT
+  cert_issuer: Google Trust Services (WE1)
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+- host: portal.forter.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 24 23:59:59 2027 GMT
+  cert_issuer: Amazon (Amazon RSA 2048 M04)
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+- host: api.forter.secure.com
+  https: unknown
+  note: >-
+    The bare host api.forter.secure.com does not resolve. The Forter API is
+    served on a per-tenant host - requests go to https://{siteId}.api.forter.secure.com -
+    so the generic host has no public DNS record and could not be probed
+    directly.
+domains:
+- domain: forter.com
+  dnssec: false
+  caa: []
+  spf: true
+  spf_record: v=spf1 include:95bc97.workshop-spf.net include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com include:2776164.spf01.hubspotemail.net include:_spf.atlassian.net include:_spf.salesforce.com ~all
+  dmarc: true
+  dmarc_policy: quarantine

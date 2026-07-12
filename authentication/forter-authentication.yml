@@ -1,0 +1,26 @@
+generated: '2026-07-12'
+method: derived
+source: openapi/forter-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: >-
+    HTTP Basic authentication with your Forter API key as the username (empty
+    password). Requests must also carry the `x-forter-siteid` header (your site
+    ID), an `api-version` header (for example `10.1`), and
+    `Content-Type: application/json`. The site ID and API key are provisioned by
+    Forter during enterprise onboarding and are found in your account
+    credentials. Requests are sent to a per-tenant host by prepending the site
+    ID to the API host (https://{siteId}.api.forter.secure.com).
+  sources:
+  - openapi/forter-openapi.yml
+  - https://docs.forter.com/docs/api-overview
+notes: >-
+  Forter's Tokenization API additionally supports HMAC request signing (SHA256,
+  SHA512, SHA1, MD5), IP allow-listing, target-URL allow-listing, and mTLS. The
+  Core order/account/decision endpoints modeled in this catalog entry use Basic
+  auth plus the site-ID header, per docs.forter.com.

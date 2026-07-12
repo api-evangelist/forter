@@ -1,0 +1,62 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Forter
+providerId: forter
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- Fraud Prevention
+- Identity
+- Payments
+- E-commerce
+- Plans
+description: >-
+  Forter does not publish public, self-service pricing. It is an enterprise,
+  contact-sales platform sold to online merchants and marketplaces. Commercial
+  terms are negotiated per customer and are typically structured around
+  transaction / order volume and the set of products enabled (fraud management,
+  chargeback recovery, abuse prevention, payment optimization, identity
+  protection). API credentials (a site ID and API key) are provisioned by
+  Forter during onboarding once a contract is in place; there is no free tier or
+  developer signup for the decision API. Exact rates are not reconciled here.
+notes: >-
+  There is no public price list or free tier for the Forter Decision API.
+  Pricing is quoted by Forter sales and commonly tied to protected transaction
+  volume plus enabled product modules. Verify current commercial terms directly
+  with Forter during procurement.
+sources:
+- https://www.forter.com/
+- https://www.forter.com/platform/
+- https://docs.forter.com/docs/api-overview
+plans:
+- id: forter-enterprise
+  name: Enterprise (Contact Sales)
+  type: enterprise
+  description: >-
+    Negotiated enterprise agreement covering the Forter products a merchant
+    enables. Credentials for the Decision API are provisioned by Forter after
+    contracting. Pricing is typically based on protected transaction/order
+    volume and product scope.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Fraud Management
+  - name: Chargeback Recovery
+  - name: Abuse Prevention
+  - name: Payment Optimization
+  - name: Identity Protection
+  - name: Decision API Access
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

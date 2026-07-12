@@ -1,0 +1,92 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Forter
+providerId: forter
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- Fraud Prevention
+- Identity
+- Payments
+- E-commerce
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Forter spend. Forter is an enterprise, contact-sales fraud
+  prevention and identity platform; there is no public price list or usage-based
+  self-service billing for the Decision API. Cost is governed by a negotiated
+  enterprise contract, commonly structured around protected transaction / order
+  volume and the set of enabled products (fraud management, chargeback recovery,
+  abuse prevention, payment optimization, identity protection). Because pricing
+  is bespoke and not published, the meters and per-unit rates below are modeled
+  cost dimensions for allocation, not reconciled figures.
+notes: >-
+  Per-unit rates are not reconciled; obtain them from your Forter agreement.
+  Some Forter commercial models are performance-aligned (for example, chargeback
+  recovery is often tied to recovered/guaranteed chargebacks) - confirm the
+  billing basis for each enabled product with Forter.
+sources:
+- https://www.forter.com/
+- https://www.forter.com/platform/
+- https://docs.forter.com/docs/api-overview
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Forter
+serviceCategory: Fraud Prevention and Identity
+billingModel:
+  pricingCategory: Contract-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Forter Decision API
+  ServiceCategory: Fraud Prevention and Identity
+  ProviderName: Forter
+  PublisherName: Forter
+  InvoiceIssuerName: Forter
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Contract-Based
+meters:
+- name: protected_transactions
+  description: Orders / transactions submitted to Forter for a decision - a common commercial basis.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - account
+  - site
+- name: enabled_products
+  description: Set of Forter product modules enabled under the contract (fraud, chargeback recovery, abuse, payment optimization, identity).
+  unit: modules
+  aggregation: max
+  dimensions:
+  - account
+- name: recovered_chargebacks
+  description: Chargebacks recovered or guaranteed - a performance-aligned dimension for chargeback recovery products.
+  unit: chargebacks
+  aggregation: sum
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Track protected transaction volume per site and the set of enabled products against the contract.
+- name: Allocation
+  description: Map site IDs to business units / brands so decision volume and product costs map to internal cost centers.
+- name: Optimization
+  description: Enable only the products in use; scope integrations (orders, accounts, disputes) to the flows that need decisions.
+- name: Accountability
+  description: Review transaction volume and any performance-aligned charges (for example recovered chargebacks) against the negotiated agreement each billing period.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

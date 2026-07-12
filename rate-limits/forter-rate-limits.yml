@@ -1,0 +1,53 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Forter
+providerId: forter
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- Fraud Prevention
+- Payments
+- E-commerce
+- Rate Limiting
+- Quotas
+description: >-
+  Forter does not publish fixed numeric rate limits for its Decision API in the
+  public documentation. The API is a real-time, synchronous decision service
+  called inline at checkout, signup, and login; throughput is provisioned per
+  account to match the merchant's transaction volume rather than governed by a
+  published per-minute request cap. Practical limits, timeouts, and failover
+  behavior (for example, how to handle a timeout or a non-2xx response at
+  checkout) are defined per integration during onboarding.
+notes: >-
+  No public per-account or per-endpoint numeric request-rate limit is documented
+  as of the review date. Confirm your account's throughput allowance, request
+  timeout expectations, and recommended fail-open / fail-closed behavior with
+  Forter during integration.
+sources:
+- https://docs.forter.com/docs/api-overview
+- https://www.forter.com/
+responseCodes:
+  throttled: 429
+limits:
+- name: Decision API Requests
+  scope: account
+  metric: requests
+  limit: not published
+  notes: Provisioned per account to match transaction volume; no public numeric cap.
+- name: Real-Time Decision Latency
+  scope: request
+  metric: milliseconds
+  limit: synchronous / inline
+  notes: Called inline at checkout, signup, and login; integrations define timeout and fallback handling.
+policies:
+- name: Provisioned Throughput
+  description: Capacity is sized per account during onboarding rather than exposed as a public rate limit.
+- name: Backoff Strategy
+  description: Clients should implement retries with exponential backoff and jitter and honor Retry-After on 429 responses.
+- name: Failover Handling
+  description: Define fail-open or fail-closed behavior for checkout when a decision call times out or errors, per Forter integration guidance.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

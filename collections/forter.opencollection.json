@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Forter API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{apiKey}}",
+      "password": ""
+    },
+    "headers": [
+      { "name": "x-forter-siteid", "value": "{{siteId}}" },
+      { "name": "api-version", "value": "10.1" },
+      { "name": "Content-Type", "value": "application/json" }
+    ]
+  },
+  "items": [
+    {
+      "info": { "name": "Orders", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Submit an order for a decision (v2).", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/orders/:orderId",
+            "params": [
+              { "name": "orderId", "value": "", "type": "path", "description": "Merchant-generated order identifier." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Send order/checkout information to receive a real-time fraud or abuse decision. Path/method confirmed; body modeled."
+        },
+        {
+          "info": { "name": "Submit an order for a decision (v3).", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v3/orders/:orderId",
+            "params": [
+              { "name": "orderId", "value": "", "type": "path", "description": "Merchant-generated order identifier." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Version 3 of the order decision endpoint. Path/method confirmed; body modeled."
+        },
+        {
+          "info": { "name": "Report order status.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/status/:orderId",
+            "params": [
+              { "name": "orderId", "value": "", "type": "path", "description": "Merchant-generated order identifier." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Report the downstream lifecycle status of an order back to Forter. Path/method confirmed; body modeled."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Accounts", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Submit a signup for a decision.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/accounts/signup/:accountId",
+            "params": [
+              { "name": "accountId", "value": "", "type": "path", "description": "Account identifier." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Send registration information at signup to receive a fraud or abuse decision. Path/method confirmed; body modeled."
+        },
+        {
+          "info": { "name": "Submit a login / authentication result (ATO).", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/accounts/authentication-result/:loginId",
+            "params": [
+              { "name": "loginId", "value": "", "type": "path", "description": "Login / authentication event identifier." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Send login attempt information to receive an account takeover decision. Path/method confirmed; body modeled."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Disputes", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Submit a compensation request for a decision.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/unified/compensation/request/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "Compensation request identifier." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Send a customer-initiated compensation request (refund/reship) to receive a fraud or abuse decision. Path/method confirmed; body modeled."
+        },
+        {
+          "info": { "name": "Report a dispute (chargeback).", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/dispute/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "Dispute identifier." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "MODELED PATH. Report a customer-initiated dispute to Forter. Disputes group is documented; exact path not verified from a public sample."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Data Privacy", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Data-subject profile access.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/accounts/profile-access/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "Account / data-subject identifier." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Profile access endpoint for privacy and compliance workflows. Path/method confirmed; body modeled."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

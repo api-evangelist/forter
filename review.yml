@@ -1,0 +1,118 @@
+aid: forter
+name: Forter
+review:
+  question: Does Forter expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-12'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Forter's public API is a synchronous
+    request/response REST decision service over HTTPS. There is no documented
+    server-push transport (WebSocket or SSE) on Forter's own API to model.
+    Forter can push change-of-status information to a merchant via webhooks
+    (server-to-endpoint HTTP callbacks, e.g. an order status update
+    notification the merchant hosts), but those are outbound HTTP POSTs to the
+    merchant's endpoint, not a Forter-hosted WebSocket, and are out of scope for
+    an AsyncAPI document describing Forter's own API surface.
+findings:
+  summary: |
+    Forter does not publish a documented public WebSocket API. Forter is a
+    fraud prevention and digital identity platform for online commerce. Its
+    Core/Decision API is synchronous REST over HTTPS: a merchant POSTs order,
+    account signup, or login information and receives a real-time trust
+    decision (approve / decline / not reviewed) in the HTTP response. Requests
+    use HTTP Basic authentication (API key as username) plus an
+    `x-forter-siteid` header and an `api-version` header. Requests are sent to
+    a per-tenant host, https://{siteId}.api.forter.secure.com. No realtime,
+    bidirectional, or streaming WebSocket (ws:// or wss://) endpoint is
+    documented anywhere in Forter's API reference. Forter's realtime-ish
+    delivery in the other direction is via webhooks (HTTP callbacks to a
+    merchant-hosted URL), not WebSocket.
+  accessModel: |
+    Enterprise / contact-sales. There is no self-service developer signup for
+    the Decision API and no public pricing. Credentials (a site ID and API
+    key) are provisioned by Forter during onboarding once a contract is in
+    place, and an implementation engineer may create a customized API version
+    for the integration, viewable in the Forter Portal.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.forter.secure.com
+      documented: true
+      note: >-
+        Synchronous decision API. Sent to a per-tenant host
+        https://{siteId}.api.forter.secure.com. HTTP Basic auth plus
+        x-forter-siteid and api-version headers.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: >-
+        Forter posts status/notification callbacks to a merchant-hosted HTTPS
+        endpoint (for example an order status update notification). Outbound
+        server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: >-
+        No WebSocket endpoint is documented anywhere in Forter's API reference
+        as of the review date.
+  endpointsConfirmedRest:
+    - POST https://api.forter.secure.com/v2/orders/{orderId}
+    - POST https://api.forter.secure.com/v3/orders/{orderId}
+    - POST https://api.forter.secure.com/v2/status/{orderId}
+    - POST https://api.forter.secure.com/v2/accounts/signup/{accountId}
+    - POST https://api.forter.secure.com/v2/accounts/authentication-result/{loginId}
+    - POST https://api.forter.secure.com/v2/unified/compensation/request/{id}
+    - POST https://api.forter.secure.com/v2/accounts/profile-access/{id}
+  endpointsModeled:
+    - POST https://api.forter.secure.com/v2/dispute/{id}
+  modeledNote: |
+    The Disputes (chargeback) group is documented at docs.forter.com, but the
+    exact path/version for the dispute-reporting endpoint was not verified from
+    a public code sample, so /v2/dispute/{id} is a MODELED path. All
+    request/response BODY schemas in openapi/forter-openapi.yml are MODELED for
+    orientation - Forter does not publish a machine-readable OpenAPI and the
+    real order/account payloads are large and provisioned per integration. The
+    3DS, Merchants, Tokenization, Account Updater, and Orchestration
+    (Payments/Refunds) product groups exist in Forter's documentation but were
+    not modeled here because exact public paths were not confirmed.
+sources:
+  - url: https://docs.forter.com/docs/api-overview
+    type: Documentation
+    note: Base URL pattern https://{siteId}.api.forter.secure.com, Basic auth plus site-ID and api-version headers. All REST.
+  - url: https://docs.forter.com/reference/overview
+    type: APIReference
+    note: Core API grouped by orders, 3DS, disputes, accounts, compensation, merchants, data privacy. No WebSocket.
+  - url: https://docs.forter.com/reference/orders
+    type: APIReference
+    note: Order decision endpoint (POST /v2/orders/{orderId}).
+  - url: https://docs.forter.com/reference/order-v3
+    type: APIReference
+    note: Order v3 decision endpoint (POST /v3/orders/{id}).
+  - url: https://docs.forter.com/reference/order-status
+    type: APIReference
+    note: Order status endpoint (POST /v2/status/{id}).
+  - url: https://docs.forter.com/reference/signup
+    type: APIReference
+    note: Signup decision endpoint (POST /v2/accounts/signup/{id}).
+  - url: https://docs.forter.com/reference/authentication-result
+    type: APIReference
+    note: Login / account takeover result endpoint (POST /v2/accounts/authentication-result/{id}).
+  - url: https://docs.forter.com/reference/compensation-request
+    type: APIReference
+    note: Compensation request endpoint (POST /v2/unified/compensation/request/{id}).
+  - url: https://docs.forter.com/reference/profile-access
+    type: APIReference
+    note: Data-privacy profile access endpoint (POST /v2/accounts/profile-access/{id}).
+  - url: https://docs.forter.com/reference/order-status-update
+    type: Documentation
+    note: Order status update notification is a webhook posted to a merchant-hosted endpoint, not a Forter WebSocket.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists, and Forter's own public API is
+    synchronous request/response REST plus outbound webhooks. No AsyncAPI
+    document was created because there is no server-push transport on Forter's
+    own API to model.
