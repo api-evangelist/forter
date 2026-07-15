@@ -127,6 +127,8 @@ apis:
     compliance workflows (for example, access requests) against the identity data
     Forter holds for an account.
 common:
+- type: AgenticAccess
+  url: agentic-access/forter-agentic-access.yml
 - type: DomainSecurity
   url: security/forter-domain-security.yml
 - type: Authentication
