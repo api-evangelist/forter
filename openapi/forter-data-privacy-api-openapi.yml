@@ -1,0 +1,94 @@
+openapi: 3.0.3
+info:
+  title: Forter Accounts Data Privacy API
+  description: 'Forter is a fraud prevention and digital identity platform for online commerce. Its Core API returns real-time trust decisions for orders, payments, account signups, and logins, and supports chargeback recovery, abuse prevention, and data-privacy workflows.
+
+
+    GROUNDING NOTE: The paths, HTTP methods, and authentication scheme in this document are grounded in Forter''s public documentation at docs.forter.com (see each operation''s `x-forter-status`). Request and response BODY schemas are MODELED for orientation - Forter does not publish a machine-readable OpenAPI, and the full order/account payloads are large and provisioned per-integration. Treat the schemas below as representative, not authoritative; confirm exact fields against your account''s customized API reference in the Forter Portal.
+
+
+    ACCESS: Forter is enterprise / contact-sales. Credentials (a per-account site ID and an API key) are provisioned by Forter during onboarding. Requests are sent to a dedicated per-tenant host by prepending your site ID to the API host - `https://{siteId}.api.forter.secure.com/{endpoint}`. The generic host `api.forter.secure.com` shown in the servers block is the documented form; the bare host does not resolve without the site-ID prefix.'
+  version: '1.0'
+  contact:
+    name: Forter
+    url: https://www.forter.com
+servers:
+- url: https://api.forter.secure.com
+  description: 'Documented API host. In practice, prepend your account site ID: https://{siteId}.api.forter.secure.com'
+security:
+- basicAuth: []
+tags:
+- name: Data Privacy
+  description: Data-subject profile access for privacy and compliance.
+paths:
+  /v2/accounts/profile-access/{id}:
+    parameters:
+    - $ref: '#/components/parameters/GenericId'
+    post:
+      operationId: submitProfileAccess
+      tags:
+      - Data Privacy
+      summary: Data-subject profile access
+      description: Profile access endpoint used to support privacy and compliance workflows against the identity data Forter holds for an account.
+      x-forter-status: Path/method confirmed against docs.forter.com (Profile access). Request/response schema MODELED.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileAccessInput'
+      responses:
+        '200':
+          description: Acknowledgement or profile-access result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ack'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    GenericId:
+      name: id
+      in: path
+      required: true
+      description: A unique identifier for the resource / event.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid credentials (site ID / API key).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    ProfileAccessInput:
+      type: object
+      description: MODELED profile-access (data privacy) payload.
+      properties:
+        accountId:
+          type: string
+        requestType:
+          type: string
+          example: access
+    Ack:
+      type: object
+      description: MODELED acknowledgement envelope.
+      properties:
+        status:
+          type: string
+          example: success
+    Error:
+      type: object
+      description: MODELED error envelope.
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'HTTP Basic authentication with your Forter API key as the username (empty password). Requests must also carry the `x-forter-siteid` header (your site ID), an `api-version` header (for example `10.1`), and `Content-Type: application/json`. Credentials are provisioned by Forter during onboarding.'
