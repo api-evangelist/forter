@@ -127,6 +127,10 @@ apis:
     compliance workflows (for example, access requests) against the identity data
     Forter holds for an account.
 common:
+- type: AgentCard
+  url: a2a/forter-a2a.yml
+  name: A2A Agent Card
+  description: Agent Card served at /.well-known/agent-card.json (flavored against A2A 1.0.0).
 - type: AgenticAccess
   url: agentic-access/forter-agentic-access.yml
 - type: DomainSecurity

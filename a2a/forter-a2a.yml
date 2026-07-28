@@ -1,0 +1,39 @@
+generated: '2026-07-28'
+method: probed
+source: https://www.forter.com/.well-known/agent-card.json
+description: 'A2A Agent Card observed at /.well-known/agent-card.json on forter.com. Grade is measured
+  against the A2A 1.0.0 AgentCard object: ''conformant'' passes every structural check, ''near-conformant''
+  is correctly shaped but omits optional fields, ''flavored'' fails a hard check and is an agent card
+  in spirit rather than in schema. Provider-published by construction — served from the provider''s own
+  host; nothing here is derived or generated.'
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: forter.com
+conformance:
+  spec: A2A 1.0.0
+  grade: flavored
+  protocol_version: null
+  preferred_transport: null
+  deviations:
+  - capabilities-not-object
+  - no-protocolVersion
+  - no-preferredTransport
+card:
+  name: forter
+  description: 'Forter helps brands grow their businesses with fraud and payments decisions, built on
+    the world''s most intelligent identity network. 33-operation REST surface (OpenAPI 3.0.0 at https://www.forter.com/openapi.json,
+    info.version 10.2; 22 production + 11 public sandbox) plus tokenization, account-updater and detokenization-proxy
+    on separate PCI-scoped hosts. Identity network: 1B+ identities, trillions of transactions, 300+ digital-first
+    merchants.'
+  url: https://www.forter.com
+  version: '1.0'
+  documentation_url: null
+  skills: 25
+  file: forter-agent-card.json
+x-evidence:
+  fetched: '2026-07-28'
+  url: https://www.forter.com/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  note: Verbatim body saved alongside this manifest. No field inferred.
