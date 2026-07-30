@@ -27,105 +27,102 @@ created: '2026-07-12'
 modified: '2026-07-12'
 specificationVersion: '0.19'
 apis:
-- aid: forter:forter-order-decision-api
-  name: Forter Order Decision API
-  tags:
-  - Fraud Detection
-  - Orders
-  - Payments
-  - Risk
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: forter:forter-accounts-api
+  name: Forter Accounts API
+  description: Signup and login (account takeover) decisions.
   humanURL: https://docs.forter.com/reference/orders
   baseURL: https://api.forter.secure.com
-  properties:
-  - url: https://docs.forter.com/docs/api-overview
-    type: Documentation
-  - url: https://docs.forter.com/reference/orders
-    type: APIReference
-  - url: openapi/forter-openapi.yml
-    type: OpenAPI
-  - url: collections/forter.postman_collection.json
-    type: PostmanCollection
-  - url: collections/forter.opencollection.json
-    type: OpenCollection
-  description: Send order and checkout information to receive a real-time fraud or
-    abuse decision (approve / decline / not-reviewed), with optional payment
-    optimization and abuse-policy recommendations. Includes the v2 and v3 order
-    decision endpoints and the order status endpoint used to report the downstream
-    lifecycle of an order back to Forter.
-- aid: forter:forter-account-protection-api
-  name: Forter Account Protection API
   tags:
-  - Account Protection
-  - Identity
-  - Account Takeover
-  - Trust
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.forter.com/reference/signup
-  baseURL: https://api.forter.secure.com
+  - Accounts
   properties:
-  - url: https://docs.forter.com/docs/api-overview
-    type: Documentation
-  - url: https://docs.forter.com/reference/signup
-    type: APIReference
-  - url: openapi/forter-openapi.yml
-    type: OpenAPI
-  - url: collections/forter.postman_collection.json
-    type: PostmanCollection
-  - url: collections/forter.opencollection.json
-    type: OpenCollection
-  description: Protect the account lifecycle - submit registration details at signup
-    to get a fraud or abuse decision, and submit login attempt details to get an
-    account takeover (ATO) decision. Built on Forter's cross-merchant identity
-    graph.
-- aid: forter:forter-chargeback-compensation-api
-  name: Forter Chargeback and Compensation API
-  tags:
-  - Chargebacks
-  - Disputes
-  - Compensation
-  - Abuse Prevention
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.forter.com/reference/compensation-request
-  baseURL: https://api.forter.secure.com
-  properties:
-  - url: https://docs.forter.com/docs/api-overview
-    type: Documentation
-  - url: https://docs.forter.com/reference/compensation-request
-    type: APIReference
-  - url: openapi/forter-openapi.yml
-    type: OpenAPI
-  - url: collections/forter.postman_collection.json
-    type: PostmanCollection
-  - url: collections/forter.opencollection.json
-    type: OpenCollection
-  description: Report customer-initiated disputes (chargebacks) to feed Forter's
-    decision model and enable chargeback recovery, and submit customer requests for
-    compensation - refunds or reships, at the order or item level - to receive a
-    fraud or abuse decision.
+  - type: OpenAPI
+    url: openapi/forter-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.forter.com/docs/api-overview
+  - type: APIReference
+    url: https://docs.forter.com/reference/orders
+  - type: PostmanCollection
+    url: collections/forter.postman_collection.json
+  - type: OpenCollection
+    url: collections/forter.opencollection.json
+  - type: APIReference
+    url: https://docs.forter.com/reference/signup
+  - type: APIReference
+    url: https://docs.forter.com/reference/compensation-request
+  - type: APIReference
+    url: https://docs.forter.com/reference/profile-access
 - aid: forter:forter-data-privacy-api
   name: Forter Data Privacy API
+  description: Data-subject profile access for privacy and compliance.
+  humanURL: https://docs.forter.com/reference/orders
+  baseURL: https://api.forter.secure.com
   tags:
   - Data Privacy
-  - Identity
-  - Compliance
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.forter.com/reference/profile-access
-  baseURL: https://api.forter.secure.com
   properties:
-  - url: https://docs.forter.com/docs/api-overview
-    type: Documentation
-  - url: https://docs.forter.com/reference/profile-access
-    type: APIReference
-  - url: openapi/forter-openapi.yml
-    type: OpenAPI
-  - url: collections/forter.postman_collection.json
-    type: PostmanCollection
-  - url: collections/forter.opencollection.json
-    type: OpenCollection
-  description: Data-subject profile access endpoint used to support privacy and
-    compliance workflows (for example, access requests) against the identity data
-    Forter holds for an account.
+  - type: OpenAPI
+    url: openapi/forter-data-privacy-api-openapi.yml
+  - type: Documentation
+    url: https://docs.forter.com/docs/api-overview
+  - type: APIReference
+    url: https://docs.forter.com/reference/orders
+  - type: PostmanCollection
+    url: collections/forter.postman_collection.json
+  - type: OpenCollection
+    url: collections/forter.opencollection.json
+  - type: APIReference
+    url: https://docs.forter.com/reference/signup
+  - type: APIReference
+    url: https://docs.forter.com/reference/compensation-request
+  - type: APIReference
+    url: https://docs.forter.com/reference/profile-access
+- aid: forter:forter-disputes-api
+  name: Forter Disputes API
+  description: Chargeback disputes and customer compensation requests.
+  humanURL: https://docs.forter.com/reference/orders
+  baseURL: https://api.forter.secure.com
+  tags:
+  - Disputes
+  properties:
+  - type: OpenAPI
+    url: openapi/forter-disputes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.forter.com/docs/api-overview
+  - type: APIReference
+    url: https://docs.forter.com/reference/orders
+  - type: PostmanCollection
+    url: collections/forter.postman_collection.json
+  - type: OpenCollection
+    url: collections/forter.opencollection.json
+  - type: APIReference
+    url: https://docs.forter.com/reference/signup
+  - type: APIReference
+    url: https://docs.forter.com/reference/compensation-request
+  - type: APIReference
+    url: https://docs.forter.com/reference/profile-access
+- aid: forter:forter-orders-api
+  name: Forter Orders API
+  description: Order and checkout fraud/abuse decisions and order status.
+  humanURL: https://docs.forter.com/reference/orders
+  baseURL: https://api.forter.secure.com
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/forter-orders-api-openapi.yml
+  - type: Documentation
+    url: https://docs.forter.com/docs/api-overview
+  - type: APIReference
+    url: https://docs.forter.com/reference/orders
+  - type: PostmanCollection
+    url: collections/forter.postman_collection.json
+  - type: OpenCollection
+    url: collections/forter.opencollection.json
+  - type: APIReference
+    url: https://docs.forter.com/reference/signup
+  - type: APIReference
+    url: https://docs.forter.com/reference/compensation-request
+  - type: APIReference
+    url: https://docs.forter.com/reference/profile-access
 common:
 - type: AgentCard
   url: a2a/forter-a2a.yml
