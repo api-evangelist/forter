@@ -1,0 +1,20 @@
+{
+  "provider": "forter",
+  "sources": [
+    "forter-accounts-api-openapi.yml",
+    "forter-data-privacy-api-openapi.yml",
+    "forter-disputes-api-openapi.yml",
+    "forter-orders-api-openapi.yml"
+  ],
+  "outputs": [
+    "forter-accounts-api-openapi.yml",
+    "forter-data-privacy-api-openapi.yml",
+    "forter-disputes-api-openapi.yml",
+    "forter-orders-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
