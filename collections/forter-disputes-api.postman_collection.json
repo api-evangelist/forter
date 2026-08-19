@@ -1,0 +1,411 @@
+{
+  "item": [
+    {
+      "id": "95f79952-41a4-46e1-9a7b-b6d69ae9742a",
+      "name": "Disputes",
+      "description": {
+        "content": "Chargeback disputes and customer compensation requests.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1146a01f-38a5-45f6-a0bc-3d437583533c",
+          "name": "Submit a compensation request for a decision",
+          "request": {
+            "name": "Submit a compensation request for a decision",
+            "description": {
+              "content": "Send information about a customer-initiated request for compensation (such as a refund or reship) to receive a fraud or abuse decision. Can be submitted at the order level or the item level.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "unified",
+                "compensation",
+                "request",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource / event."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\",\n  \"compensationType\": \"<string>\",\n  \"level\": \"<string>\",\n  \"amount\": {\n    \"amountUSD\": \"<string>\",\n    \"currency\": \"<string>\"\n  },\n  \"items\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 1471,\n      \"key_2\": \"string\",\n      \"key_3\": 9094.653282051639,\n      \"key_4\": true\n    },\n    {\n      \"key_0\": true\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac6dca5b-96f1-4020-8786-9c5bd4cfaf2f",
+              "name": "A Forter decision for the compensation request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "unified",
+                    "compensation",
+                    "request",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource / event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"compensationType\": \"<string>\",\n  \"level\": \"<string>\",\n  \"amount\": {\n    \"amountUSD\": \"<string>\",\n    \"currency\": \"USD\"\n  },\n  \"items\": [\n    {\n      \"key_0\": 1043,\n      \"key_1\": 9982.800678716947,\n      \"key_2\": 7341.599319497793\n    },\n    {\n      \"key_0\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"forterDecision\": \"not reviewed\",\n  \"forterToken\": \"string\",\n  \"reasonCode\": \"string\",\n  \"recommendation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1814dc4b-04b5-4314-a86a-814931d6ca23",
+              "name": "Missing or invalid credentials (site ID / API key).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "unified",
+                    "compensation",
+                    "request",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource / event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"compensationType\": \"<string>\",\n  \"level\": \"<string>\",\n  \"amount\": {\n    \"amountUSD\": \"<string>\",\n    \"currency\": \"USD\"\n  },\n  \"items\": [\n    {\n      \"key_0\": 1043,\n      \"key_1\": 9982.800678716947,\n      \"key_2\": 7341.599319497793\n    },\n    {\n      \"key_0\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a2eea01-f251-4a2d-b0f6-4bdfdc6192ea",
+          "name": "Report a dispute (chargeback)",
+          "request": {
+            "name": "Report a dispute (chargeback)",
+            "description": {
+              "content": "Inform Forter of a dispute initiated by a customer, for any dispute not already reported via a payment-processor webhook. No decision is returned; the input improves the model and enables chargeback recovery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "dispute",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource / event."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\",\n  \"disputeType\": \"<string>\",\n  \"disputeTime\": \"<integer>\",\n  \"amount\": {\n    \"amountUSD\": \"<string>\",\n    \"currency\": \"<string>\"\n  },\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8c6fd20b-70bf-421b-a39f-aed69602e119",
+              "name": "Acknowledgement.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "dispute",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource / event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"disputeType\": \"<string>\",\n  \"disputeTime\": \"<integer>\",\n  \"amount\": {\n    \"amountUSD\": \"<string>\",\n    \"currency\": \"USD\"\n  },\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f5acdd2-5dfa-4af2-b7bc-eba1b5347498",
+              "name": "Missing or invalid credentials (site ID / API key).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "dispute",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource / event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"disputeType\": \"<string>\",\n  \"disputeTime\": \"<integer>\",\n  \"amount\": {\n    \"amountUSD\": \"<string>\",\n    \"currency\": \"USD\"\n  },\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.forter.secure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "72df5dcd-26b0-42c7-8248-d9404a3aaf0e",
+    "name": "Forter Accounts Disputes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Forter is a fraud prevention and digital identity platform for online commerce. Its Core API returns real-time trust decisions for orders, payments, account signups, and logins, and supports chargeback recovery, abuse prevention, and data-privacy workflows.\n\nGROUNDING NOTE: The paths, HTTP methods, and authentication scheme in this document are grounded in Forter's public documentation at docs.forter.com (see each operation's `x-forter-status`). Request and response BODY schemas are MODELED for orientation - Forter does not publish a machine-readable OpenAPI, and the full order/account payloads are large and provisioned per-integration. Treat the schemas below as representative, not authoritative; confirm exact fields against your account's customized API reference in the Forter Portal.\n\nACCESS: Forter is enterprise / contact-sales. Credentials (a per-account site ID and an API key) are provisioned by Forter during onboarding. Requests are sent to a dedicated per-tenant host by prepending your site ID to the API host - `https://{siteId}.api.forter.secure.com/{endpoint}`. The generic host `api.forter.secure.com` shown in the servers block is the documented form; the bare host does not resolve without the site-ID prefix.\n\nContact Support:\n Name: Forter",
+      "type": "text/plain"
+    }
+  }
+}

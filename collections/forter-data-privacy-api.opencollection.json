@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Forter Accounts Data Privacy API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Privacy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Data-subject profile access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/accounts/profile-access/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource / event."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Profile access endpoint used to support privacy and compliance workflows against the identity data Forter holds for an account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

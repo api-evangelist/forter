@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Forter Accounts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit a signup for a decision",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/accounts/signup/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the account."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send account registration information at signup to receive a fraud or abuse decision for the new account."
+        },
+        {
+          "info": {
+            "name": "Submit a login / authentication result for an ATO decision",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/accounts/authentication-result/:loginId",
+            "params": [
+              {
+                "name": "loginId",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the login / authentication event."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send login attempt information to receive an account takeover (ATO) decision. Used to protect the login flow with Forter's identity graph."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

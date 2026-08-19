@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Forter Accounts Disputes API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Disputes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit a compensation request for a decision",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/unified/compensation/request/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource / event."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send information about a customer-initiated request for compensation (such as a refund or reship) to receive a fraud or abuse decision. Can be submitted at the order level or the item level."
+        },
+        {
+          "info": {
+            "name": "Report a dispute (chargeback)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.forter.secure.com/v2/dispute/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource / event."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Inform Forter of a dispute initiated by a customer, for any dispute not already reported via a payment-processor webhook. No decision is returned; the input improves the model and enables chargeback recovery."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
