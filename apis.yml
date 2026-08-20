@@ -20,6 +20,17 @@ tags:
 - Payments
 - Chargebacks
 - Account Protection
+- E-Commerce
+- Risk
+- Machine-Learning
+tags_raw:
+- Fraud Detection
+- Fraud Prevention
+- Identity
+- Trust
+- Payments
+- Chargebacks
+- Account Protection
 - E-commerce
 - Risk
 - Machine Learning
@@ -33,6 +44,8 @@ apis:
   humanURL: https://docs.forter.com/reference/orders
   baseURL: https://api.forter.secure.com
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -105,6 +118,8 @@ apis:
   humanURL: https://docs.forter.com/reference/orders
   baseURL: https://api.forter.secure.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
