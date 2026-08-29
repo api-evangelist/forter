@@ -11,6 +11,18 @@ description: Forter is a fraud prevention and digital identity platform for onli
   contact-sales - API credentials (a per-account site ID and API key) are
   provisioned by Forter during onboarding, and requests are sent to a dedicated
   per-tenant host.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Fraud Detection
