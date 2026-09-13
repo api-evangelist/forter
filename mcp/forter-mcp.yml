@@ -1,0 +1,29 @@
+generated: '2026-09-11'
+method: probed
+source: https://www.forter.com/mcp
+status: published
+server:
+  name: forter
+  transport: http
+  url: https://www.forter.com/mcp
+deployment:
+  mode: remote
+  endpoint: https://www.forter.com/mcp
+  verified: probed
+  probe: live
+  checked: '2026-09-11'
+  source: docs-check 2026-09-11 (endpoint found in the provider's own documentation, then probed)
+tools_count: 5
+tools:
+- name: get_fraud_decision
+  description: ''
+- name: evaluate_login_risk
+  description: ''
+- name: evaluate_signup_risk
+  description: ''
+- name: lookup_dispute_evidence
+  description: ''
+- name: check_agent_trust
+  description: ''
+tools_source: live tools/list via initialize handshake, 2026-09-11 (signals/audit_mcp_authorship.py --probe)
+authorship: provider
