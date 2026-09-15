@@ -189,6 +189,8 @@ common:
   url: finops/forter-finops.yml
 - url: https://www.forter.com/blog/
   type: Blog
+- type: Support
+  url: https://docs.forter.com/contact
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
