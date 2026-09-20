@@ -2,16 +2,16 @@
 kin_checks:
   slug: forter
   schema_version: 0.22.0
-  scored_at: '2026-09-18'
-  run_ts: 2026-09-18T231945
+  scored_at: '2026-09-19'
+  run_ts: 2026-09-19T193153
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.22.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 136
-    earned: 33
+    earned: 32
     partial: 6
-    missed: 74
+    missed: 75
     na: 23
   checks:
   - id: multiple_apis
@@ -101,6 +101,9 @@ kin_checks:
     status: missed
   - id: agent_skill_present
     status: missed
+  - id: support_channel
+    status: missed
+    detail: pointer liveness 0.0
   - id: plans_multiple
     status: missed
   - id: pricing_link
