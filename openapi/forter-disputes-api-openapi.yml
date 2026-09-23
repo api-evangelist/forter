@@ -1,13 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Forter Accounts Disputes API
-  description: 'Forter is a fraud prevention and digital identity platform for online commerce. Its Core API returns real-time trust decisions for orders, payments, account signups, and logins, and supports chargeback recovery, abuse prevention, and data-privacy workflows.
-
-
-    GROUNDING NOTE: The paths, HTTP methods, and authentication scheme in this document are grounded in Forter''s public documentation at docs.forter.com (see each operation''s `x-forter-status`). Request and response BODY schemas are MODELED for orientation - Forter does not publish a machine-readable OpenAPI, and the full order/account payloads are large and provisioned per-integration. Treat the schemas below as representative, not authoritative; confirm exact fields against your account''s customized API reference in the Forter Portal.
-
-
-    ACCESS: Forter is enterprise / contact-sales. Credentials (a per-account site ID and an API key) are provisioned by Forter during onboarding. Requests are sent to a dedicated per-tenant host by prepending your site ID to the API host - `https://{siteId}.api.forter.secure.com/{endpoint}`. The generic host `api.forter.secure.com` shown in the servers block is the documented form; the bare host does not resolve without the site-ID prefix.'
+  title: Forter Disputes API
+  description: Forter is a fraud prevention and digital identity platform for online commerce.
   version: '1.0'
   contact:
     name: Forter
@@ -72,36 +66,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    GenericId:
-      name: id
-      in: path
-      required: true
-      description: A unique identifier for the resource / event.
-      schema:
-        type: string
   schemas:
-    DisputeInput:
-      type: object
-      description: MODELED dispute (chargeback) payload.
-      properties:
-        orderId:
-          type: string
-        disputeType:
-          type: string
-        disputeTime:
-          type: integer
-        amount:
-          $ref: '#/components/schemas/Amount'
-        reason:
-          type: string
-    Ack:
-      type: object
-      description: MODELED acknowledgement envelope.
-      properties:
-        status:
-          type: string
-          example: success
     Decision:
       type: object
       description: MODELED representation of a Forter decision response. The real payload includes richer recommendation and reason detail.
@@ -144,6 +109,35 @@ components:
           items:
             type: object
             additionalProperties: true
+    Ack:
+      type: object
+      description: MODELED acknowledgement envelope.
+      properties:
+        status:
+          type: string
+          example: success
+    DisputeInput:
+      type: object
+      description: MODELED dispute (chargeback) payload.
+      properties:
+        orderId:
+          type: string
+        disputeType:
+          type: string
+        disputeTime:
+          type: integer
+        amount:
+          $ref: '#/components/schemas/Amount'
+        reason:
+          type: string
+    Error:
+      type: object
+      description: MODELED error envelope.
+      properties:
+        status:
+          type: string
+        message:
+          type: string
     Amount:
       type: object
       description: MODELED monetary amount.
@@ -153,14 +147,14 @@ components:
         currency:
           type: string
           example: USD
-    Error:
-      type: object
-      description: MODELED error envelope.
-      properties:
-        status:
-          type: string
-        message:
-          type: string
+  parameters:
+    GenericId:
+      name: id
+      in: path
+      required: true
+      description: A unique identifier for the resource / event.
+      schema:
+        type: string
   responses:
     Unauthorized:
       description: Missing or invalid credentials (site ID / API key).
