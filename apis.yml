@@ -39,7 +39,6 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
-- Fraud Detection
 - Fraud Prevention
 - Identity
 - Trust
@@ -47,8 +46,9 @@ tags:
 - Chargebacks
 - Account Protection
 - E-Commerce
-- Risk
-- Machine-Learning
+- Risk Management
+- Machine Learning
+- A2A
 tags_raw:
 - Fraud Detection
 - Fraud Prevention
@@ -60,6 +60,8 @@ tags_raw:
 - E-commerce
 - Risk
 - Machine Learning
+- Machine-Learning
+- A2A
 created: '2026-07-12'
 modified: '2026-07-12'
 specificationVersion: '0.23'
@@ -96,6 +98,8 @@ apis:
   humanURL: https://docs.forter.com/reference/orders
   baseURL: https://api.forter.secure.com
   tags:
+  - Privacy
+  tags_raw:
   - Data Privacy
   properties:
   - type: OpenAPI

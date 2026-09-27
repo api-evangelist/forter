@@ -71,26 +71,22 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    AccountId:
+      name: accountId
+      in: path
+      required: true
+      description: A unique identifier for the account.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid credentials (site ID / API key).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Decision:
-      type: object
-      description: MODELED representation of a Forter decision response. The real payload includes richer recommendation and reason detail.
-      properties:
-        forterDecision:
-          type: string
-          description: The Forter recommendation.
-          enum:
-          - approve
-          - decline
-          - not reviewed
-          - verification requested
-        forterToken:
-          type: string
-          description: The Forter managed token correlating this event.
-        reasonCode:
-          type: string
-        recommendation:
-          type: string
     AccountEventInput:
       type: object
       description: MODELED subset for signup and login events (registration or authentication details plus connection information).
@@ -115,21 +111,25 @@ components:
           type: string
         message:
           type: string
-  parameters:
-    AccountId:
-      name: accountId
-      in: path
-      required: true
-      description: A unique identifier for the account.
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Missing or invalid credentials (site ID / API key).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Decision:
+      type: object
+      description: MODELED representation of a Forter decision response. The real payload includes richer recommendation and reason detail.
+      properties:
+        forterDecision:
+          type: string
+          description: The Forter recommendation.
+          enum:
+          - approve
+          - decline
+          - not reviewed
+          - verification requested
+        forterToken:
+          type: string
+          description: The Forter managed token correlating this event.
+        reasonCode:
+          type: string
+        recommendation:
+          type: string
   securitySchemes:
     basicAuth:
       type: http
