@@ -16,14 +16,20 @@ deployment:
 tools_count: 5
 tools:
 - name: get_fraud_decision
-  description: ''
+  description: Returns a DEMO Forter fraud decision (APPROVE / DECLINE / REVIEW) for a given transaction_id.
+    Synthetic result - does not call into real Forter decisioning. Production decisions come from https://api.forter-secure.com
+    (REST) or https://mcp.
 - name: evaluate_login_risk
-  description: ''
+  description: Returns a DEMO login-risk score (0-100) for a user_id, optionally with IP and user-agent
+    context. Synthetic - production scores come from the Forter REST account-protection API.
 - name: evaluate_signup_risk
-  description: ''
+  description: Returns a DEMO signup-risk score and recommended action for a new account.
 - name: lookup_dispute_evidence
-  description: ''
+  description: Returns DEMO chargeback dispute representment evidence data for a dispute id. Synthetic.
 - name: check_agent_trust
-  description: ''
+  description: Returns a DEMO TACP (Trusted Agentic Commerce Protocol) trust score for an agent_id acting
+    on behalf of a user. Synthetic.
 tools_source: live tools/list via initialize handshake, 2026-09-11 (signals/audit_mcp_authorship.py --probe)
 authorship: provider
+descriptions_source: live tools/list (authorship probe or saved capture); filled by backfill-tools-from-authorship.py
+  --descriptions, 2026-09-28
