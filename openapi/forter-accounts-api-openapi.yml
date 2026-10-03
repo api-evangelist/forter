@@ -71,21 +71,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    AccountId:
-      name: accountId
-      in: path
-      required: true
-      description: A unique identifier for the account.
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Missing or invalid credentials (site ID / API key).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     AccountEventInput:
       type: object
@@ -130,6 +115,21 @@ components:
           type: string
         recommendation:
           type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid credentials (site ID / API key).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    AccountId:
+      name: accountId
+      in: path
+      required: true
+      description: A unique identifier for the account.
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

@@ -51,6 +51,13 @@ components:
         requestType:
           type: string
           example: access
+    Ack:
+      type: object
+      description: MODELED acknowledgement envelope.
+      properties:
+        status:
+          type: string
+          example: success
     Error:
       type: object
       description: MODELED error envelope.
@@ -59,20 +66,6 @@ components:
           type: string
         message:
           type: string
-    Ack:
-      type: object
-      description: MODELED acknowledgement envelope.
-      properties:
-        status:
-          type: string
-          example: success
-  responses:
-    Unauthorized:
-      description: Missing or invalid credentials (site ID / API key).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     GenericId:
       name: id
@@ -81,6 +74,13 @@ components:
       description: A unique identifier for the resource / event.
       schema:
         type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid credentials (site ID / API key).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http
