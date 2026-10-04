@@ -66,6 +66,13 @@ components:
           type: string
         message:
           type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid credentials (site ID / API key).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     GenericId:
       name: id
@@ -74,13 +81,6 @@ components:
       description: A unique identifier for the resource / event.
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Missing or invalid credentials (site ID / API key).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

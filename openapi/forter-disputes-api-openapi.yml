@@ -67,15 +67,39 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Amount:
+    DisputeInput:
       type: object
-      description: MODELED monetary amount.
+      description: MODELED dispute (chargeback) payload.
       properties:
-        amountUSD:
+        orderId:
           type: string
-        currency:
+        disputeType:
           type: string
-          example: USD
+        disputeTime:
+          type: integer
+        amount:
+          $ref: '#/components/schemas/Amount'
+        reason:
+          type: string
+    Decision:
+      type: object
+      description: MODELED representation of a Forter decision response. The real payload includes richer recommendation and reason detail.
+      properties:
+        forterDecision:
+          type: string
+          description: The Forter recommendation.
+          enum:
+          - approve
+          - decline
+          - not reviewed
+          - verification requested
+        forterToken:
+          type: string
+          description: The Forter managed token correlating this event.
+        reasonCode:
+          type: string
+        recommendation:
+          type: string
     CompensationInput:
       type: object
       description: MODELED compensation request payload.
@@ -106,20 +130,6 @@ components:
         status:
           type: string
           example: success
-    DisputeInput:
-      type: object
-      description: MODELED dispute (chargeback) payload.
-      properties:
-        orderId:
-          type: string
-        disputeType:
-          type: string
-        disputeTime:
-          type: integer
-        amount:
-          $ref: '#/components/schemas/Amount'
-        reason:
-          type: string
     Error:
       type: object
       description: MODELED error envelope.
@@ -128,25 +138,15 @@ components:
           type: string
         message:
           type: string
-    Decision:
+    Amount:
       type: object
-      description: MODELED representation of a Forter decision response. The real payload includes richer recommendation and reason detail.
+      description: MODELED monetary amount.
       properties:
-        forterDecision:
+        amountUSD:
           type: string
-          description: The Forter recommendation.
-          enum:
-          - approve
-          - decline
-          - not reviewed
-          - verification requested
-        forterToken:
+        currency:
           type: string
-          description: The Forter managed token correlating this event.
-        reasonCode:
-          type: string
-        recommendation:
-          type: string
+          example: USD
   parameters:
     GenericId:
       name: id

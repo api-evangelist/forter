@@ -92,40 +92,25 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Amount:
+    Decision:
       type: object
-      description: MODELED monetary amount.
+      description: MODELED representation of a Forter decision response. The real payload includes richer recommendation and reason detail.
       properties:
-        amountUSD:
+        forterDecision:
           type: string
-        currency:
-          type: string
-          example: USD
-    OrderStatusInput:
-      type: object
-      description: MODELED order status payload.
-      properties:
-        orderId:
-          type: string
-        updatedStatus:
-          type: string
+          description: The Forter recommendation.
           enum:
-          - AUTHORIZATION_REQUESTED
-          - CAPTURED
-          - CANCELED_BY_MERCHANT
-          - CANCELED_BY_CUSTOMER
-          - SHIPPED
-          - REFUNDED
-          - COMPLETED
-        updateTime:
-          type: integer
-    Ack:
-      type: object
-      description: MODELED acknowledgement envelope.
-      properties:
-        status:
+          - approve
+          - decline
+          - not reviewed
+          - verification requested
+        forterToken:
           type: string
-          example: success
+          description: The Forter managed token correlating this event.
+        reasonCode:
+          type: string
+        recommendation:
+          type: string
     OrderInput:
       type: object
       description: MODELED subset of the order/checkout payload. Real orders include detailed buyer, cart, payment, shipping, and connection information.
@@ -156,6 +141,13 @@ components:
         connectionInformation:
           type: object
           additionalProperties: true
+    Ack:
+      type: object
+      description: MODELED acknowledgement envelope.
+      properties:
+        status:
+          type: string
+          example: success
     Error:
       type: object
       description: MODELED error envelope.
@@ -164,25 +156,33 @@ components:
           type: string
         message:
           type: string
-    Decision:
+    OrderStatusInput:
       type: object
-      description: MODELED representation of a Forter decision response. The real payload includes richer recommendation and reason detail.
+      description: MODELED order status payload.
       properties:
-        forterDecision:
+        orderId:
           type: string
-          description: The Forter recommendation.
+        updatedStatus:
+          type: string
           enum:
-          - approve
-          - decline
-          - not reviewed
-          - verification requested
-        forterToken:
+          - AUTHORIZATION_REQUESTED
+          - CAPTURED
+          - CANCELED_BY_MERCHANT
+          - CANCELED_BY_CUSTOMER
+          - SHIPPED
+          - REFUNDED
+          - COMPLETED
+        updateTime:
+          type: integer
+    Amount:
+      type: object
+      description: MODELED monetary amount.
+      properties:
+        amountUSD:
           type: string
-          description: The Forter managed token correlating this event.
-        reasonCode:
+        currency:
           type: string
-        recommendation:
-          type: string
+          example: USD
   parameters:
     OrderId:
       name: orderId
