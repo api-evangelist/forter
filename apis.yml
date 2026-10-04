@@ -169,6 +169,9 @@ apis:
   - type: APIReference
     url: https://docs.forter.com/reference/profile-access
 common:
+- type: CapabilityMap
+  url: capabilities/forter-capability-edges.yml
+  name: Forter Business Capability Map
 - type: AgentCard
   url: a2a/forter-a2a.yml
   name: A2A Agent Card
