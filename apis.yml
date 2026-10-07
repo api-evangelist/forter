@@ -169,6 +169,8 @@ apis:
   - type: APIReference
     url: https://docs.forter.com/reference/profile-access
 common:
+- type: Pricing
+  url: https://www.forter.com/platform/payment-optimization/
 - type: CapabilityMap
   url: capabilities/forter-capability-edges.yml
   name: Forter Business Capability Map
