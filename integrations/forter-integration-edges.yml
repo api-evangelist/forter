@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/forter/integrations
 - https://n8n.io/integrations/forter/
@@ -10,7 +10,25 @@ checked:
 - https://monid.ai/tools/forter
 - https://n8n.io/integrations/forter/
 - https://zapier.com/apps/forter/integrations
+- ping-identity/integrations/ping-identity-integration-edges.yml
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: Ping Identity (own)
+  partner: ping-identity
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.pingone.com/item/forter-davinci-connector
+  mirror_of: ping-identity/integrations/ping-identity-integration-edges.yml
+  apps:
+  - Forter Connector
+  - Forter - Sample Flow Template
+  listing_count: 2
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
 templates: []
