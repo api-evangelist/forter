@@ -71,7 +71,39 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    AccountId:
+      name: accountId
+      in: path
+      required: true
+      description: A unique identifier for the account.
+      schema:
+        type: string
   schemas:
+    AccountEventInput:
+      type: object
+      description: MODELED subset for signup and login events (registration or authentication details plus connection information).
+      properties:
+        accountId:
+          type: string
+        eventTime:
+          type: integer
+        loginMethod:
+          type: string
+        accountData:
+          type: object
+          additionalProperties: true
+        connectionInformation:
+          type: object
+          additionalProperties: true
+    Error:
+      type: object
+      description: MODELED error envelope.
+      properties:
+        status:
+          type: string
+        message:
+          type: string
     Decision:
       type: object
       description: MODELED representation of a Forter decision response. The real payload includes richer recommendation and reason detail.
@@ -91,38 +123,6 @@ components:
           type: string
         recommendation:
           type: string
-    Error:
-      type: object
-      description: MODELED error envelope.
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-    AccountEventInput:
-      type: object
-      description: MODELED subset for signup and login events (registration or authentication details plus connection information).
-      properties:
-        accountId:
-          type: string
-        eventTime:
-          type: integer
-        loginMethod:
-          type: string
-        accountData:
-          type: object
-          additionalProperties: true
-        connectionInformation:
-          type: object
-          additionalProperties: true
-  parameters:
-    AccountId:
-      name: accountId
-      in: path
-      required: true
-      description: A unique identifier for the account.
-      schema:
-        type: string
   responses:
     Unauthorized:
       description: Missing or invalid credentials (site ID / API key).

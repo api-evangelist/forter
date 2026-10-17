@@ -67,6 +67,53 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Ack:
+      type: object
+      description: MODELED acknowledgement envelope.
+      properties:
+        status:
+          type: string
+          example: success
+    CompensationInput:
+      type: object
+      description: MODELED compensation request payload.
+      properties:
+        orderId:
+          type: string
+        compensationType:
+          type: string
+          enum:
+          - refund
+          - reship
+        level:
+          type: string
+          enum:
+          - order
+          - item
+        amount:
+          $ref: '#/components/schemas/Amount'
+        items:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    Error:
+      type: object
+      description: MODELED error envelope.
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+    Amount:
+      type: object
+      description: MODELED monetary amount.
+      properties:
+        amountUSD:
+          type: string
+        currency:
+          type: string
+          example: USD
     DisputeInput:
       type: object
       description: MODELED dispute (chargeback) payload.
@@ -100,53 +147,6 @@ components:
           type: string
         recommendation:
           type: string
-    CompensationInput:
-      type: object
-      description: MODELED compensation request payload.
-      properties:
-        orderId:
-          type: string
-        compensationType:
-          type: string
-          enum:
-          - refund
-          - reship
-        level:
-          type: string
-          enum:
-          - order
-          - item
-        amount:
-          $ref: '#/components/schemas/Amount'
-        items:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-    Ack:
-      type: object
-      description: MODELED acknowledgement envelope.
-      properties:
-        status:
-          type: string
-          example: success
-    Error:
-      type: object
-      description: MODELED error envelope.
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-    Amount:
-      type: object
-      description: MODELED monetary amount.
-      properties:
-        amountUSD:
-          type: string
-        currency:
-          type: string
-          example: USD
   parameters:
     GenericId:
       name: id
