@@ -18,7 +18,7 @@ tools:
 - name: get_fraud_decision
   description: Returns a DEMO Forter fraud decision (APPROVE / DECLINE / REVIEW) for a given transaction_id.
     Synthetic result - does not call into real Forter decisioning. Production decisions come from https://api.forter-secure.com
-    (REST) or https://mcp.
+    (REST) or https://mcp.forter.com/mcp (MCP) - see https://www.forter.com/contact-us/.
 - name: evaluate_login_risk
   description: Returns a DEMO login-risk score (0-100) for a user_id, optionally with IP and user-agent
     context. Synthetic - production scores come from the Forter REST account-protection API.
