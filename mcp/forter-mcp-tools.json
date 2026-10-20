@@ -1,0 +1,171 @@
+{
+  "endpoint": "https://www.forter.com/mcp",
+  "captured": "2026-10-20",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-03-26",
+  "server_info": {
+    "name": "forter-demo",
+    "title": "Forter Trust Platform - demo MCP",
+    "version": "1.0.0"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "get_fraud_decision",
+        "title": "Get fraud decision (demo)",
+        "description": "Returns a DEMO Forter fraud decision (APPROVE / DECLINE / REVIEW) for a given transaction_id. Synthetic result - does not call into real Forter decisioning. Production decisions come from https://api.forter-secure.com (REST) or https://mcp.forter.com/mcp (MCP) - see https://www.forter.com/contact-us/.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "transaction_id": {
+              "type": "string",
+              "description": "Transaction id or order number."
+            }
+          },
+          "required": [
+            "transaction_id"
+          ],
+          "additionalProperties": false
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false,
+          "title": "Get fraud decision (demo)"
+        },
+        "_meta": {
+          "ui": {
+            "resourceUri": "ui://decision/{transaction_id}"
+          }
+        }
+      },
+      {
+        "name": "evaluate_login_risk",
+        "title": "Evaluate login risk (demo)",
+        "description": "Returns a DEMO login-risk score (0-100) for a user_id, optionally with IP and user-agent context. Synthetic - production scores come from the Forter REST account-protection API.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "string",
+              "description": "Tenant user id."
+            },
+            "ip": {
+              "type": "string",
+              "description": "Client IP (optional)."
+            },
+            "user_agent": {
+              "type": "string",
+              "description": "Client UA (optional)."
+            }
+          },
+          "required": [
+            "user_id"
+          ],
+          "additionalProperties": false
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false,
+          "title": "Evaluate login risk (demo)"
+        },
+        "_meta": {
+          "ui": {
+            "resourceUri": "ui://login_risk/{user_id}"
+          }
+        }
+      },
+      {
+        "name": "evaluate_signup_risk",
+        "title": "Evaluate signup risk (demo)",
+        "description": "Returns a DEMO signup-risk score and recommended action for a new account.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "description": "Signup email."
+            },
+            "ip": {
+              "type": "string",
+              "description": "Client IP (optional)."
+            }
+          },
+          "required": [
+            "email"
+          ],
+          "additionalProperties": false
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false,
+          "title": "Evaluate signup risk (demo)"
+        }
+      },
+      {
+        "name": "lookup_dispute_evidence",
+        "title": "Lookup dispute evidence (demo)",
+        "description": "Returns DEMO chargeback dispute representment evidence data for a dispute id. Synthetic.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "dispute_id": {
+              "type": "string",
+              "description": "Forter dispute id."
+            }
+          },
+          "required": [
+            "dispute_id"
+          ],
+          "additionalProperties": false
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false,
+          "title": "Lookup dispute evidence (demo)"
+        }
+      },
+      {
+        "name": "check_agent_trust",
+        "title": "Check agent trust (TACP demo)",
+        "description": "Returns a DEMO TACP (Trusted Agentic Commerce Protocol) trust score for an agent_id acting on behalf of a user. Synthetic.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "agent_id": {
+              "type": "string",
+              "description": "Agent identifier (e.g. ChatGPT, Claude, custom)."
+            },
+            "user_email": {
+              "type": "string",
+              "description": "Email of the user the agent acts on behalf of (optional)."
+            }
+          },
+          "required": [
+            "agent_id"
+          ],
+          "additionalProperties": false
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false,
+          "title": "Check agent trust (TACP demo)"
+        },
+        "_meta": {
+          "ui": {
+            "resourceUri": "ui://agent_trust/{agent_id}"
+          }
+        }
+      }
+    ]
+  }
+}
