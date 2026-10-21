@@ -14,26 +14,11 @@ checked:
 - https://n8n.io/integrations/forter/
 - https://zapier.com/apps/forter/integrations
 - ping-identity/integrations/ping-identity-integration-edges.yml
+- commercetools/integrations/commercetools-integration-edges.yml
+- salesforce-commerce-cloud/integrations/salesforce-commerce-cloud-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
-- partner_name: Ping Identity (own)
-  partner: ping-identity
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://marketplace.pingone.com/item/forter-davinci-connector
-  mirror_of: ping-identity/integrations/ping-identity-integration-edges.yml
-  apps:
-  - Forter Connector
-  - Forter - Sample Flow Template
-  listing_count: 2
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
 - partner_name: A2A protocol (own Agent Card)
   partner: null
   partner_match: register
@@ -98,4 +83,57 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
   first_seen: '2026-10-20'
+- partner_name: Ping Identity (own)
+  partner: ping-identity
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.pingone.com/item/forter-davinci-connector
+  mirror_of: ping-identity/integrations/ping-identity-integration-edges.yml
+  apps:
+  - Forter Connector
+  - Forter - Sample Flow Template
+  listing_count: 2
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+- partner_name: commercetools (own)
+  partner: commercetools
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://commercetools.com/technology-partners/forter
+  mirror_of: commercetools/integrations/commercetools-integration-edges.yml
+  apps:
+  - Forter
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: Financial Services, Other Solutions
+- partner_name: Salesforce Commerce Cloud (own)
+  partner: salesforce-commerce-cloud
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://appexchange.salesforce.com/appxListingDetail?listingId=899bdb39-126d-435a-aba9-642aa2fe0c91
+  mirror_of: salesforce-commerce-cloud/integrations/salesforce-commerce-cloud-integration-edges.yml
+  apps:
+  - Forter - Fraud Prevention & Identity Intelligence
+  - Forter Fraud Prevention Cartridge for DTC
+  - Forter-Powered Loyalty Fraud Protection
+  listing_count: 3
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: commerce, eCommerce, loyalty
 templates: []
