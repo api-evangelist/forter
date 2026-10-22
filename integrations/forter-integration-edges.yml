@@ -16,6 +16,7 @@ checked:
 - ping-identity/integrations/ping-identity-integration-edges.yml
 - commercetools/integrations/commercetools-integration-edges.yml
 - salesforce-commerce-cloud/integrations/salesforce-commerce-cloud-integration-edges.yml
+- adobe-commerce/integrations/adobe-commerce-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -136,4 +137,21 @@ edges:
   detected: '2026-10-20'
   detected_by: mirror-platform-listings.py
   category: commerce, eCommerce, loyalty
+- partner_name: Adobe Commerce (own)
+  partner: adobe-commerce
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://commercemarketplace.adobe.com/forter-magento2-module-forter.html
+  mirror_of: adobe-commerce/integrations/adobe-commerce-integration-edges.yml
+  apps:
+  - Forter Fraud Prevention Platform
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Adobe Commerce Marketplace extension
 templates: []
