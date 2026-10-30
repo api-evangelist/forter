@@ -1,4 +1,4 @@
-# Forter (forter)
+# Forter
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,143 +64,133 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Forter is a fraud prevention and digital identity platform for online commerce. Its Decision API returns real-time trust-or-not decisions for orders, payments, account signups, and logins, drawing on a global identity graph and machine learning trained across a large network of merchants. Beyond fraud management, Forter covers chargeback recovery, abuse prevention, payment optimization, 3DS orchestration, and identity protection.
+Forter is a fraud prevention and digital identity platform for online commerce. Its Decision API returns real-time trust-or-not decisions for orders, payments, account signups, and logins, drawing on a global identity graph and machine learning trained across a large network of merchants. Beyond fraud management, Forter covers chargeback recovery, abuse prevention, payment optimization, 3DS orchestration, and identity protection. Access is enterprise / contact-sales - API credentials (a per-account site ID and API key) are provisioned by Forter during onboarding, and requests are sent to a dedicated per-tenant host.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/forter/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/forter/refs/heads/main/apis.yml)
+**Areas:** Fraud Prevention · Identity · Trust · Payments · Chargebacks · Account Protection · E-Commerce · Risk Management · Machine Learning · A2A
 
-## Access Model (Honest Note)
+## Forter on APIs.io
 
-Forter is an **enterprise, contact-sales** platform. There is **no self-service developer signup and no public price list** for the Decision API.
+Everything profiled for Forter is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/forter/](https://apis.io/providers/forter/)** — or go straight to one of the APIs or properties below.
 
-- API credentials - a per-account **site ID** and an **API key** - are **provisioned by Forter during onboarding**, once a contract is in place.
-- Requests use **HTTP Basic authentication** (API key as the username, empty password) plus an `x-forter-siteid` header and an `api-version` header (for example `10.1`).
-- Requests are sent to a **dedicated per-tenant host**: `https://{siteId}.api.forter.secure.com/{endpoint}`. The generic host `api.forter.secure.com` shown in this catalog is the documented form; the bare host does not resolve without the site-ID prefix.
-- An implementation engineer may create a **customized version** of Forter's API for a given integration; the authoritative reference for a live account lives in the Forter Portal.
+### APIs (4)
 
-## Grounding Note
+- [Forter Accounts API](https://apis.io/apis/forter/forter-accounts-api/) — Signup and login (account takeover) decisions.
+- [Forter Data Privacy API](https://apis.io/apis/forter/forter-data-privacy-api/) — Data-subject profile access for privacy and compliance.
+- [Forter Disputes API](https://apis.io/apis/forter/forter-disputes-api/) — Chargeback disputes and customer compensation requests.
+- [Forter Orders API](https://apis.io/apis/forter/forter-orders-api/) — Order and checkout fraud/abuse decisions and order status.
 
-Endpoint **paths and HTTP methods** in this entry are grounded in Forter's public documentation at [docs.forter.com](https://docs.forter.com/). Request and response **body schemas** in the OpenAPI are **modeled** for orientation - Forter does not publish a machine-readable OpenAPI, and the real payloads are large and provisioned per integration. One path (dispute reporting) is flagged as a modeled path. See [`review.yml`](review.yml) for the confirmed-vs-modeled breakdown.
+### Published properties
 
-## Tags
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Fraud Detection
-- Fraud Prevention
-- Identity
-- Trust
-- Payments
-- Chargebacks
-- Account Protection
-- E-commerce
-- Risk
-- Machine Learning
+#### MCP servers (1)
 
-## Timestamps
+Model Context Protocol servers that expose the API to agents.
 
-- **Created:** 2026-07-12
-- **Modified:** 2026-07-12
+- [forter](https://apis.io/servers/forter/forter/)
 
-## APIs
+#### Agentic access (1)
 
-### Forter Order Decision API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Send order and checkout information to receive a real-time fraud or abuse decision (approve / decline / not-reviewed), with optional payment optimization and abuse-policy recommendations. Includes the v2 and v3 order decision endpoints and the order status endpoint used to report the downstream lifecycle of an order back to Forter.
+- [Forter Agentic Access](https://apis.io/agentic-access/forter/forter-agentic-access/)
 
-- **Human URL:** [https://docs.forter.com/reference/orders](https://docs.forter.com/reference/orders)
-- **Base URL:** `https://api.forter.secure.com`
+#### Collections (5)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Fraud Detection
-- Orders
-- Payments
-- Risk
+- [Forter API](https://apis.io/collections/forter/open-forter/)
+- [Forter Accounts API](https://apis.io/collections/forter/open-forter-accounts-api/)
+- [Forter Accounts Data Privacy API](https://apis.io/collections/forter/open-forter-data-privacy-api/)
+- [Forter Accounts Disputes API](https://apis.io/collections/forter/open-forter-disputes-api/)
+- [Forter Accounts Orders API](https://apis.io/collections/forter/open-forter-orders-api/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://docs.forter.com/docs/api-overview)
-- [API Reference](https://docs.forter.com/reference/orders)
-- [OpenAPI](openapi/forter-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/forter.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/forter.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Forter Account Protection API
+- [Forter Authentication](https://apis.io/security/forter/forter-authentication/)
+- [Forter Domain Security](https://apis.io/security/forter/forter-domain-security/)
 
-Protect the account lifecycle - submit registration details at signup to get a fraud or abuse decision, and submit login attempt details to get an account takeover (ATO) decision. Built on Forter's cross-merchant identity graph.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://docs.forter.com/reference/signup](https://docs.forter.com/reference/signup)
-- **Base URL:** `https://api.forter.secure.com`
+Published plans, tiers and prices.
 
-#### Tags
+- [Forter Plans Pricing](https://apis.io/plans/forter/forter-plans-pricing/)
 
-- Account Protection
-- Identity
-- Account Takeover
-- Trust
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://docs.forter.com/docs/api-overview)
-- [API Reference](https://docs.forter.com/reference/signup)
-- [OpenAPI](openapi/forter-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/forter.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/forter.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Forter Rate Limits](https://apis.io/rate-limits/forter/forter-rate-limits/)
 
-### Forter Chargeback and Compensation API
+#### FinOps (1)
 
-Report customer-initiated disputes (chargebacks) to feed Forter's decision model and enable chargeback recovery, and submit customer requests for compensation - refunds or reships, at the order or item level - to receive a fraud or abuse decision.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://docs.forter.com/reference/compensation-request](https://docs.forter.com/reference/compensation-request)
-- **Base URL:** `https://api.forter.secure.com`
+- [Forter Finops](https://apis.io/finops/forter/forter-finops/)
 
-#### Tags
+## Where to find this API
 
-- Chargebacks
-- Disputes
-- Compensation
-- Abuse Prevention
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Properties
-
-- [Documentation](https://docs.forter.com/docs/api-overview)
-- [API Reference](https://docs.forter.com/reference/compensation-request)
-- [OpenAPI](openapi/forter-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/forter.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/forter.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Forter Data Privacy API
-
-Data-subject profile access endpoint used to support privacy and compliance workflows (for example, access requests) against the identity data Forter holds for an account.
-
-- **Human URL:** [https://docs.forter.com/reference/profile-access](https://docs.forter.com/reference/profile-access)
-- **Base URL:** `https://api.forter.secure.com`
-
-#### Tags
-
-- Data Privacy
-- Identity
-- Compliance
-
-#### Properties
-
-- [Documentation](https://docs.forter.com/docs/api-overview)
-- [API Reference](https://docs.forter.com/reference/profile-access)
-- [OpenAPI](openapi/forter-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/forter.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/forter.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Domain Security](security/forter-domain-security.yml)
-- [Authentication](authentication/forter-authentication.yml)
-- [LinkedIn](https://www.linkedin.com/company/forter)
 - [Website](https://www.forter.com/)
 - [Documentation](https://docs.forter.com/)
-- [Plans](plans/forter-plans-pricing.yml)
-- [Rate Limits](rate-limits/forter-rate-limits.yml)
-- [Fin Ops](finops/forter-finops.yml)
+- [Pricing](https://www.forter.com/platform/payment-optimization/)
+- [Support](https://docs.forter.com/contact)
 - [Blog](https://www.forter.com/blog/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 22.6** — emerging · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 48.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 15.5 |
+| Access clarity | 10.5 |
+
+**Agent readiness 29.5** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | flavored (partial credit) |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 10.0** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/forter/](https://apis.io/providers/forter/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Forter: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/forter/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
